@@ -132,19 +132,23 @@ This widget was originally created under CC-BY-4.0 by Neuromatch Academy for the
 
       <!-- padding -->
       import tensorflow as tf <br><br>
-      input= tf.random.normal(shape=(1<input class="input_matrixz" type="hidden" min="1" max="3" value="1">, <input class="input_matrixx" type="number" min="3" max="5" value="4">, <input class="input_matrixy" type="number" min="3" max="5" value="4">, 1)<br>
-      convlayer = tf.keras.layers.Conv2D(filters=1<input class="input_matrixzB" type="hidden" min="1" max="3" value="1">, out_channels=1<input class="input_filterz" type="hidden" min="1" max="3" value="1">,
+      input= tf.random.uniform(shape=(1, <input class="input_matrixx" type="number" min="3" max="8" value="4">, <input class="input_matrixy" type="number" min="3" max="8" value="4">, <input class="input_matrixz" type="hidden" min="1" max="3" value="1"> 1), minval=0, maxval=10, dtype=tf.int32)<br>
+      convlayer = tf.keras.layers.Conv2D(filters=1, <input class="input_filterz" type="hidden" min="1" max="3" value="1">,
       kernel_size= <span class="pair"><span class="pair_hide">(</span><input class="input_filterx" type="number" min="2" max="7" value="3"><span class="pair_hide">,
                                                                       <input class="input_filtery" type="number" min="2" max="7" value="3">)</span></span>,
       strides= <span class="pair"><span class="pair_hide">(</span><input class="input_stridex" type="number" min="1" max="2" value="1"><span class="pair_hide">,
                                                                 <input class="input_stridey" type="number" min="1" max="2" value="1">)</span></span>,
 
-      padding= "same") <br>
+      padding= "valid") # no padding applied <br> <br>
 
-      # padding on (top & bottom, left & right): <span class="pair"><span class="pair_hide">(</span><input class="input_paddingx" type="number" min="0" max="4" value="0"><span class="pair_hide">,
-                                                                 <input class="input_paddingy" type="number" min="0" max="4" value="0">)</span></span><br> <br>
+      # Manual symmetric padding. Generally we prefer to set the padding argument in tf.keras.layers.Conv2D to "same" than to pad inputs ourselves. <br>
+      pad_x= <input class="input_paddingx" type="number" min="0" max="4" value="0"> <br>
+      pad_y= <input class="input_paddingy" type="number" min="0" max="4" value="0"> <br><br>
+      padding= tf.constant( [ [0,0], [pad_y,pad_y],[pad_x,pad_x], [0,0] ] )<br><br>
+      padded_input = tf.pad(input, padding) <br>
+      padded_input = tf.cast(padded_input, tf.float32) <br><br>
 
-      result = convlayer(input)
+      result = convlayer(padded_input)
 
 
   </div>
@@ -470,10 +474,10 @@ This widget was originally created under CC-BY-4.0 by Neuromatch Academy for the
 
       svg.selectAll("*").remove();
 
-      dom_target.querySelector(".input_matrixzB").value = dom_target.querySelector(".input_matrixz").value
+      // dom_target.querySelector(".input_matrixzB").value = dom_target.querySelector(".input_matrixz").value
 
-      dom_target.querySelector(".input_paddingx").value = Math.floor(dom_target.querySelector(".input_filterx").value / 2)
-      dom_target.querySelector(".input_paddingy").value = Math.floor(dom_target.querySelector(".input_filtery").value / 2)
+      // dom_target.querySelector(".input_paddingx").value = Math.floor(dom_target.querySelector(".input_filterx").value / 2)
+      // dom_target.querySelector(".input_paddingy").value = Math.floor(dom_target.querySelector(".input_filtery").value / 2)
 
 
 
@@ -678,7 +682,7 @@ This widget was originally created under CC-BY-4.0 by Neuromatch Academy for the
   dom_target.querySelector(".input_matrixx").onchange = ()=>{init()}
   dom_target.querySelector(".input_matrixy").onchange = ()=>{init()}
   dom_target.querySelector(".input_matrixz").onchange = ()=>{init()}
-  dom_target.querySelector(".input_matrixzB").onchange = (i)=>{dom_target.querySelector(".input_matrixz").value = parseInt(i.target.value); init();};
+  // dom_target.querySelector(".input_matrixzB").onchange = (i)=>{dom_target.querySelector(".input_matrixz").value = parseInt(i.target.value); init();};
   dom_target.querySelector(".input_paddingx").onchange = ()=>{init()}
   dom_target.querySelector(".input_paddingy").onchange = ()=>{init()}
   dom_target.querySelector(".input_stridex").onchange = ()=>{init()}
