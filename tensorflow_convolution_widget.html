@@ -136,7 +136,7 @@
       strides= (<input class="input_stridex" type="number" min="1" max="2" value="1">,
                                                                 <input class="input_stridey" type="number" min="1" max="2" value="1">),
 
-      padding=<input class="input_padding" type="text" value ="valid"> ))<br> <br>
+      padding=<input class="input_padding" type="text" value ="valid">)<br> <br>
 
       <input class="input_paddingxleft" type="hidden" min="0" max="20" value="0">
                                                                  <input class="input_paddingxright" type="hidden" min="0" max="20" value="0">
@@ -489,6 +489,7 @@
       }
 
       if(dom_target.querySelector(".input_padding").value =="valid"){
+          console.log("noticed")
           dom_target.querySelector(".input_paddingxleft").value = 0
           dom_target.querySelector(".input_paddingxright").value = 0
           dom_target.querySelector(".input_paddingytop").value = 0
