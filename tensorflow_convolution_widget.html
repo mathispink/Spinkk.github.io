@@ -488,6 +488,13 @@
           dom_target.querySelector(".input_paddingybottom").value = dom_target.querySelector(".input_filtery").value - dom_target.querySelector(".input_paddingytop").value -1
       }
 
+      if(dom_target.querySelector(".input_padding").value =="valid"){
+          dom_target.querySelector(".input_paddingxleft").value = 0
+          dom_target.querySelector(".input_paddingxright").value = 0
+          dom_target.querySelector(".input_paddingytop").value = 0
+          dom_target.querySelector(".input_paddingybottom").value = 0
+      }
+
       filter = generateMatrix2(numberGenerator(17, 0.9, 1), [parseInt(dom_target.querySelector(".input_filterz").value), parseInt(dom_target.querySelector(".input_matrixz").value), parseInt(dom_target.querySelector(".input_filtery").value), parseInt(dom_target.querySelector(".input_filterx").value)]);
       if(dom_target.querySelector(".input_filterx").value == dom_target.querySelector(".input_filtery").value)
           dom_target.querySelector(".input_filterx").parentElement.className = "pair"
