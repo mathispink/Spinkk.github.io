@@ -130,7 +130,7 @@
       <!-- padding -->
       import tensorflow as tf <br><br>
       input = tf.random.uniform(shape=(1,  <input class="input_matrixy" type="number" min="3" max="8" value="4">, <input class="input_matrixx" type="number" min="3" max="8" value="4">, <input class="input_matrixz" type="number" min="1" max="3" value="1">), minval=0, maxval=10, dtype=tf.int32)<br>
-      convlayer = tf.keras.layers.Conv2D(filters=<input class="input_filterz" type="number" min="1" max="3" value="1">,
+      <br>convlayer = tf.keras.layers.Conv2D(filters=<input class="input_filterz" type="number" min="1" max="3" value="1">,
       kernel_size= (<input class="input_filtery" type="number" min="2" max="7" value="3">,<input class="input_filterx" type="number" min="2" max="7" value="3">)
       strides= (<input class="input_stridey" type="number" min="1" max="2" value="1">, <input class="input_stridex" type="number" min="1" max="2" value="1">)
 
@@ -141,8 +141,8 @@
 
     <input class="input_paddingytop" type="hidden" min="0" max="20" value="0">
                                                                  <input class="input_paddingybottom" type="hidden" min="0" max="20" value="0"><br>
-      input = tf.cast(input, tf.float32)<br>
-      result = convlayer(input)
+      <br>input = tf.cast(input, tf.float32)<br>
+      <br>result = convlayer(input)
 
   </div>
       <button class="button_play play"><svg width="15" height="15" viewbox="0 0 10 10"><path d="M 1.5,0 9.5,5 1.5,10 z"/></svg></button>
